@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="user-input" class="card" style="text-align: center;">
+    <div class="ctrlBtn">
+        <h1>Todo List App</h1>
+    </div>
+</section>
+<section id="toDo" class="todo-container card">
+    <ul id="remaining-list">
+        <section class="todo">
+            <h1>Completed Tasks</h1>
+            {% for todo in todos %}
+                {% if todo.completed %}
+                    <li id="li">
+                        <a class="a" href="details/{{todo.id}}" style="text-decoration: none;color: black;"><h2>{{ todo.name }}</h2></a>
+                        <a class="a" href="{% url 'delete' todo.id %}"><i class="fa-solid fa-square-xmark red-icon"></i></a>
+                        <a class="a" href="{% url 'update' todo.id %}"><i class="fa-solid fa-pen green-icon"></i></a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section class="todo">
+            <h1>Not Completed Tasks</h1>
+            {% for todo in todos %}
+                {% if not todo.completed %}
+                    <li id="li">
+                        <a class="a" href="details/{{todo.id}}" style="text-decoration: none;color: black;"><h2>{{ todo.name }}</h2></a>
+                        <a class="a" href="{% url 'delete' todo.id %}"><i class="fa-solid fa-square-xmark red-icon"></i></a>
+                        <a class="a" href="{% url 'update' todo.id %}"><i class="fa-solid fa-pen green-icon"></i></a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </ul>
+    <a class="btn btn-success" href="{% url 'create' %}" role="button">Create</a>
+</section>
+
+{% endblock %}

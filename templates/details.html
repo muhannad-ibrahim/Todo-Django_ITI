@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        <div class="card bg-light mb-3 mt-5" style="max-width: 18rem;margin-left:35%">
+        <div class="card-header">{{todo.name}}</div>
+        <div class="card-body">
+            {% for item in items %}
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description}}</p>
+            {% endfor %}
+        </div>
+        </div>
+{% endblock content %}
